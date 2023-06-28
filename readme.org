@@ -21,7 +21,7 @@ The examples directory includes small programs.
 cat ./examples/ex1/main.go
 #+end_src
 
-#+begin_example go
+#+begin_src go
 package main
 
 import (
@@ -89,7 +89,7 @@ func (u uses) braceTemplate() {
 	fmt.Println(hw1)
 	fmt.Println()
 }
-#+end_example
+#+end_src
 
 Which can be ran like so:
 
