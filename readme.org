@@ -1,6 +1,7 @@
 #+PROPERTY: header-args:sh :prologue "exec 2>&1" :epilogue ":"
 
 [[https://github.com/lcaballero/codefmt/actions/workflows/main.yaml/badge.svg]]
+https://goreportcard.com/badge/github.com/lcaballero/codefmt
 
 * Overview
 
