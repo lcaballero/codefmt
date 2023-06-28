@@ -2,6 +2,9 @@
 
 ![[https://github.com/lcaballero/codefmt/actions/workflows/main.yaml/badge.svg?branch=main][Github actions]]
 
+[[example workflow][https://github.com/github/docs/actions/workflows/main.yml/badge.svg]]
+
+
 [[https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png]]
 
 
