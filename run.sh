@@ -21,6 +21,7 @@ badges::imgs() {
 <img alt="GitHub Workflow Action Status"
      src="https://github.com/lcaballero/codefmt/actions/workflows/main.yaml/badge.svg"/>
 </a>
+&nbsp;
 <a href="https://goreportcard.com/badge/github.com/lcaballero/codefmt">
 <img alt="Go Report codefmt (this repo)"
      src="https://goreportcard.com/badge/github.com/lcaballero/codefmt"/>
