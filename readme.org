@@ -10,8 +10,8 @@ There is _NO GO TEMPLATING_ used by this library.
 Think =Sprintf= as the default.  And that the output is collected in a
 buffer rather than sent to stdout.  Which means the =f= at the end of
 =Sprintf= is redundant, and since all method calls are string oriented
-the =S= is also redundant, because it not geared for low-level IO and
-strings are good enough, in this case.
+the =S= is also redundant, because this library is not geared for
+low-level IO and strings are good enough, in this case.
 
 * Examples
 
