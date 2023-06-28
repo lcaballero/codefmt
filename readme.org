@@ -2,7 +2,10 @@
 
 [[https://github.com/lcaballero/codefmt/actions/workflows/main.yaml/badge.svg]]
 
-[[https://goreportcard.com/badge/github.com/lcaballero/codefmt]]
+#+begin_src html
+<img src="https://goreportcard.com/badge/github.com/lcaballero/codefmt"/>
+#+end_src
+
 
 * Overview
 
