@@ -1,7 +1,6 @@
 #+PROPERTY: header-args:sh :prologue "exec 2>&1" :epilogue ":"
 
-![[https://github.com/friendsofgo/killgrave/actions/workflows/main.yaml/badge.svg?branch=main][Github actions]]
-
+[[https://github.com/lcaballero/codefmt/actions/workflows/main.yaml/badge.svg]]
 
 * Overview
 
