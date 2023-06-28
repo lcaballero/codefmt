@@ -3,7 +3,7 @@
 * Overview
 
 This is a library based around convenience functions for formatting
-and buffering string in the Go programming language.
+and buffering strings in the Go programming language.
 
 There is _NO GO TEMPLATING_ used by this library.
 
