@@ -137,4 +137,4 @@ Keeping it simple for now.
 
 * License
 
-MIT License, [[LICENCE][LICENSE]].
+MIT License, [[LICENSE][LICENSE]].
