@@ -1,5 +1,8 @@
 #+PROPERTY: header-args:sh :prologue "exec 2>&1" :epilogue ":"
 
+![[https://github.com/friendsofgo/killgrave/actions/workflows/main.yaml/badge.svg?branch=main][Github actions]]
+
+
 * Overview
 
 This is a library based around convenience functions for formatting
@@ -12,6 +15,13 @@ buffer rather than sent to stdout.  Which means the =f= at the end of
 =Sprintf= is redundant, and since all method calls are string oriented
 the =S= is also redundant, because this library is not geared for
 low-level IO and strings are good enough, in this case.
+
+* API
+
+#+begin_src shell :results output
+awk 
+
+#+end_src
 
 * Examples
 
@@ -114,3 +124,17 @@ Your order number is: 42, should be ready at: 2:38PM
 Order for 42, "deluxe hamburger" is ready!!!
 #+end_example
 
+
+
+* Contriubting
+
+See [[CONTRIBUTING.md][CONTRIBUTING.md]].  However, this project (at the moment) isn't
+following those guidelines simply becasue the level of interest isn't
+that high and this lib is quite simple.  It is provided for
+formality's sake.  Just make issues and open PRs for the time being.
+Keeping it simple for now.
+
+
+* Liscense
+
+MIT License, [[LISCENCE][LICENSE]].
