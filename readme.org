@@ -1,14 +1,12 @@
 #+PROPERTY: header-args:sh :prologue "exec 2>&1" :epilogue ":"
 
-[[https://github.com/lcaballero/codefmt/actions/workflows/main.yaml/badge.svg]]
+#+begin_src shell :results verbatim raw
+  ./run.sh badges
+#+end_src
 
 #+begin_html
-  <img alt="GitHub Workflow Action Status"
-       src="https://github.com/lcaballero/codefmt/actions/workflows/main.yaml/badge.svg"/>
-  <img alt="Go Report codefmt (this repo)"
-       src="https://goreportcard.com/badge/github.com/lcaballero/codefmt"/>
+<img alt="GitHub Workflow Action Status" src="https://github.com/lcaballero/codefmt/actions/workflows/main.yaml/badge.svg"/><img alt="Go Report codefmt (this repo)" src="https://goreportcard.com/badge/github.com/lcaballero/codefmt"/> 
 #+end_html
-
 
 * Overview
 
