@@ -7,10 +7,11 @@ and buffering string in the Go programming language.
 
 There is _NO GO TEMPLATING_ used by this library.
 
-Think instead of =Sprintf= as the default and the output collected in a
-buffer.  Which means the =f= at the end of =Sprintf= is redundant, and
-since =S= is also redundant because it is not geared for low-level IO
-and strings in this case are good enough.
+Think =Sprintf= as the default.  And that the output is collected in a
+buffer rather than sent to stdout.  Which means the =f= at the end of
+=Sprintf= is redundant, and since all method calls are string oriented
+the =S= is also redundant, because it not geared for low-level IO and
+strings are good enough, in this case.
 
 * Examples
 
@@ -20,7 +21,6 @@ The examples directory includes small programs that can be ran with:
 go run ./examples/ex1/main.go
 #+end_src
 
-#+RESULTS:
 #+begin_example
 Hello, World!
 
