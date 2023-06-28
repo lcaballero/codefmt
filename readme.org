@@ -135,6 +135,6 @@ formality's sake.  Just make issues and open PRs for the time being.
 Keeping it simple for now.
 
 
-* Liscense
+* License
 
 MIT License, [[LISCENCE][LICENSE]].
