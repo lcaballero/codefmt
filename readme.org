@@ -1,0 +1,38 @@
+#+PROPERTY: header-args:sh :prologue "exec 2>&1" :epilogue ":"
+
+* Overview
+
+This is a library based around convenience functions for formatting
+and buffering string in the Go programming language.
+
+There is _NO GO TEMPLATING_ used by this library.
+
+Think instead of =Sprintf= as the default and the output collected in a
+buffer.  Which means the =f= at the end of =Sprintf= is redundant, and
+since =S= is also redundant because it is not geared for low-level IO
+and strings in this case are good enough.
+
+* Examples
+
+The examples directory includes small programs that can be ran with:
+
+#+begin_src shell :results output
+go run ./examples/ex1/main.go
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Hello, World!
+
+Author/Poems
+Author: Robert Frost, Poem: The Road Not Taken
+Author: Maya Angelou, Poem: Stil I Rise
+Author: Dylan Thomas, Poem: Do Not Go Gentle into that That Good Night
+
+I'll have 4 hamburgers with pickle, ketchup, and mustard.
+
+Your order number is: 42, should be ready at: 2:38PM
+
+Order for 42, "deluxe hamburger" is ready!!!
+#+end_example
+
