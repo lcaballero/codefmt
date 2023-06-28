@@ -17,10 +17,14 @@ badges::imgs() {
     (
 
       cat <<EOF
+<a href="https://github.com/lcaballero/codefmt/actions/workflows/main.yaml/badge.svg">
 <img alt="GitHub Workflow Action Status"
      src="https://github.com/lcaballero/codefmt/actions/workflows/main.yaml/badge.svg"/>
+</a>
+<a href="https://goreportcard.com/badge/github.com/lcaballero/codefmt">
 <img alt="Go Report codefmt (this repo)"
      src="https://goreportcard.com/badge/github.com/lcaballero/codefmt"/>
+</a>
 EOF
 
     ) | \
