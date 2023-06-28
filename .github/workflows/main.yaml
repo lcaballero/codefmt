@@ -2,8 +2,8 @@ name: Run tests
 
 on:
   push:
-    paths:
-      - '.'
+    branches:
+      - main
 
 jobs:
   build:
