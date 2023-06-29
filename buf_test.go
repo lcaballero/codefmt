@@ -1,6 +1,7 @@
 package codefmt
 
 import (
+	"bytes"
 	"strings"
 	"testing"
 
@@ -32,7 +33,7 @@ func Test_NewBuf(t *testing.T) {
 			name: "Sub",
 			fn: func(buf *Buf) {
 				buf.Sub("${greet}, ${name}!",
-					map[string]string{
+					map[string]any{
 						"greet": "Hello",
 						"name":  "World",
 					},
@@ -59,6 +60,24 @@ func Test_NewBuf(t *testing.T) {
 				},
 			},
 		},
+		{
+			name: "Preln",
+			fn: func(buf *Buf) {
+				buf.Preln("a:%d", 1)
+				assert.True(t, strings.HasPrefix(buf.String(), "\n"))
+			},
+			expected: "\na:1",
+		},
+		{
+			name: "Both",
+			fn: func(buf *Buf) {
+				buf.Both("b:%d", 2)
+				assert.True(t,
+					strings.HasPrefix(buf.String(), "\n") &&
+						strings.HasSuffix(buf.String(), "\n"))
+			},
+			expected: "\nb:2\n",
+		},
 	}
 
 	for _, c := range cases {
@@ -66,11 +85,21 @@ func Test_NewBuf(t *testing.T) {
 			buf := NewBuf()
 			c.fn(buf)
 			assert.Equal(t, c.expected, buf.String())
+			assert.Equal(t, []byte(c.expected), buf.Bytes())
 			if len(c.checks) > 0 {
 				for _, fn := range c.checks {
 					fn(buf)
 				}
 			}
+			out := bytes.NewBufferString("")
+			buf.out = out
+			buf.Stdout()
+			assert.Equal(t, c.expected, out.String())
+
+			err := bytes.NewBufferString("")
+			buf.err = err
+			buf.Stderr()
+			assert.Equal(t, c.expected, err.String())
 		})
 	}
 }

@@ -11,7 +11,7 @@ var MapReplaceRE = regexp.MustCompile("\\${[^{}]*}[\t\n]*")
 
 // Replacer is a partial application that holds a string template and
 // accepts Replacements map to fill in placeholders with values
-type Replacer func(m map[string]string) string
+type Replacer func(m map[string]any) string
 
 // Replace turns the given pairs into a map and executes the resulting
 // Replacer
@@ -50,7 +50,7 @@ func (b BraceTemplate) MapPair(pairs ...string) string {
 // notation for Camel case.  Where this notation is used the values
 // any whitespace or hyphens are removed.
 func MapReplacer(s string) Replacer {
-	return func(m map[string]string) string {
+	return func(m map[string]any) string {
 		return MapReplaceRE.ReplaceAllStringFunc(s, func(name string) string {
 			orig := name
 			trimmed := strings.TrimSpace(orig)
@@ -65,27 +65,22 @@ func MapReplacer(s string) Replacer {
 			if isCamel {
 				name = strings.TrimPrefix(name, "@")
 			}
-			suffix := orig[len(trimmed):]
 			v, ok := m[name]
 			if !ok {
 				return name
 			}
 			if isPascal {
-				v = ToPascal(v)
+				v = ToPascal(fmt.Sprintf("%v", v))
 			}
 			if isCamel {
-				v = ToCamel(v)
+				v = ToCamel(fmt.Sprintf("%v", v))
 			}
-			if strings.HasSuffix(orig, "-}") {
-				return v
-			}
-			return v + suffix
+			return fmt.Sprintf("%v", v)
 		})
 	}
 }
 
-// ToCamel formats the string as a camel cased string
-func ToCamel(s string) string {
+func camel(s string) string {
 	lower := strings.ToLower(s)
 	switch lower {
 	case "id", "html", "url":
@@ -95,8 +90,29 @@ func ToCamel(s string) string {
 	}
 }
 
-// ToPascal formats the string as pascal cased string
-func ToPascal(s string) string {
+// ToCamel formats the string as a camel cased string
+func ToCamel(s string) string {
+	fn := func(i int, ks string) string {
+		if i == 0 {
+			return camel(ks)
+		}
+		return pascal(ks)
+	}
+	return deKebob(s, fn)
+}
+
+// deKebob splits the string on spaces and hyphens and applies the
+// func to each resulting word
+func deKebob(s string, fn func(int, string) string) string {
+	words := strings.Split(strings.Replace(s, "-", " ", -1), " ")
+	for i, w := range words {
+		words[i] = fn(i, w)
+	}
+	return strings.Join(words, "")
+}
+
+// pascal converts a single word to pascal case
+func pascal(s string) string {
 	upper := strings.ToUpper(s)
 	switch upper {
 	case "ID", "HTML", "URL":
@@ -106,9 +122,17 @@ func ToPascal(s string) string {
 	}
 }
 
+// ToPascal formats the string as pascal cased string
+func ToPascal(s string) string {
+	fn := func(i int, str string) string {
+		return pascal(str)
+	}
+	return deKebob(s, fn)
+}
+
 // ToPairs creates a map using the pairs as key/value pairs
-func ToPairs(args ...any) map[string]string {
-	m := map[string]string{}
+func ToPairs(args ...any) map[string]any {
+	m := map[string]any{}
 	for i := 1; i < len(args); i = i + 2 {
 		k0, v0 := args[i-1], args[i]
 		key, val := fmt.Sprintf("%s", k0), fmt.Sprintf("%v", v0)

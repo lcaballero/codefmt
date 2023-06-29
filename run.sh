@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
 build() {
     go install
 }
@@ -9,8 +11,7 @@ tests() {
 }
 
 execute() {
-    echo "execute not implemented yet"
-    exit 1
+    cover
 }
 
 badges::imgs() {
@@ -41,10 +42,30 @@ badges() {
 }
 
 funcs() {
-    #grep -rP '^func\s(?:\([^\)]+\)\s)?[A-Z].*' *.go
+    local file
+    find . -type f -depth 1 -name '*.go' | \
+        grep -v '_test' | \
+        while read -r file; do
+            awk '/^func /{print $0}' "$file" | sed -E 's/ {//g'
+        done | \
+            grep -v -E 'camel|pascal|deKebob'
+    # TODO: handle un-exported funcs without making special cases
+}
 
-    awk '/^func /{print $0}' $(ls *.go | grep -v _test) | sed -E 's/ {//g'
-    
+cover() {
+    mkdir -p .cover
+    go test -coverprofile=.cover/c.out
+    go tool cover -html=.cover/c.out -o .cover/index.html
+}
+
+show::coverage() {
+    local number
+    number="$1"
+    open "http://127.0.0.1:2222/#file$number"
+}
+
+run::shellcheck() {
+    shellcheck "$DIR/${BASH_SOURCE[0]}"
 }
 
 "$@"
