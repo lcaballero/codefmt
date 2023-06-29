@@ -55,28 +55,6 @@ func ToPascal(s string) string
 func ToPairs(args ...any) map[string]any
 #+end_src
 
-#+begin_src go
-func NewBuf() *Buf
-func (b *Buf) Bytes() []byte
-func (b *Buf) String() string
-func (b *Buf) Stdout() *Buf
-func (b *Buf) Stderr() *Buf
-func (b *Buf) Write(format string, args ...interface{}) *Buf
-func (b *Buf) Sub(format string, subs map[string]string) *Buf
-func (b *Buf) Expand(format string, args ...interface{}) *Buf
-func (b *Buf) Writeln(format string, args ...interface{}) *Buf
-func (b *Buf) NL() *Buf
-func (b *Buf) Preln(format string, args ...interface{}) *Buf
-func (b *Buf) Both(format string, args ...interface{}) *Buf
-func (r Replacer) Replace(pairs ...any) string
-func (b BraceTemplate) Replace(pairs ...any) string
-func (b BraceTemplate) MapPair(pairs ...string) string
-func MapReplacer(s string) Replacer
-func ToCamel(s string) string
-func ToPascal(s string) string
-func ToPairs(args ...any) map[string]string
-#+end_src
-
 * Examples
 
 The examples directory includes small programs.
