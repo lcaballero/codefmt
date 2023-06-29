@@ -40,4 +40,11 @@ badges() {
     echo "#+end_html"
 }
 
+funcs() {
+    #grep -rP '^func\s(?:\([^\)]+\)\s)?[A-Z].*' *.go
+
+    awk '/^func /{print $0}' $(ls *.go | grep -v _test) | sed -E 's/ {//g'
+    
+}
+
 "$@"

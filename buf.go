@@ -35,7 +35,7 @@ func (b *Buf) Stdout() *Buf {
 }
 
 // Stderr write buffer to stderr
-func (b *Buf) Err() *Buf {
+func (b *Buf) Stderr() *Buf {
 	fmt.Fprint(os.Stderr, b)
 	return b
 }
