@@ -1,6 +1,10 @@
 #+PROPERTY: header-args:sh :prologue "exec 2>&1" :epilogue ":"
 
 #+begin_src shell :results verbatim raw :exports none
+  # This code block is used to create the html for badges and so is
+  # hidden on export.  Running the block creates a and +begin_html block
+  # inside of the +RESULT block.  Remove the +RESULT before commiting
+  # updates of the readme.org
   ./run.sh badges
 #+end_src
 
